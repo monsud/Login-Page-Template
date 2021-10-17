@@ -1,0 +1,31 @@
+<div class="login_form">
+    <form id="submit" name="sub" #sub="ngForm">
+        <p>E-Mail</p>
+        <input  ngModel 
+                name="email" 
+                #email="ngModel" 
+                id="email_login" 
+                type="email" 
+                required placeholder="Email" 
+                class="form-control ng-invalid ng-dirty ng-touched"/>
+        <div class="alert alert-danger" 
+            *ngIf="email.touched && !email.valid">
+            <div *ngIf="email.errors.required">Il campo email deve essere obbligatorio</div>
+        </div>
+        <p>Password</p>
+        <input  ngModel 
+                name="pass" 
+                #pass="ngModel" 
+                id="pass_login" 
+                type="password" 
+                required placeholder="Password" 
+                required minlength="5" 
+                class="form-control ng-invalid ng-dirty ng-touched"/>
+        <div class="alert alert-danger" 
+            *ngIf="pass.touched && !pass.valid">
+            <div *ngIf="pass.errors.required">Il campo password deve essere obbligatorio</div>
+            <div *ngIf="pass.errors.minlength">Il campo deve contenere almeno {{ pass.errors.minlength.requiredLength }} caratteri</div>
+        </div>
+        <button id="submitbtn" type="submit">Login</button>
+    </form>
+</div>
